@@ -1,15 +1,13 @@
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from 'components/Navbar/Navbar';
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
-import { purple } from '@material-ui/core/colors';
 
 const theme = createTheme({
     palette: {
-        // primary: {
-        //     main: '#fefefe',
-        // },
-        secondary: purple,
+        primary: {
+            main: '#fefefe',
+        },
     },
     typography: {
         fontFamily: 'Poppins',
@@ -23,13 +21,18 @@ const theme = createTheme({
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Navbar />
             <Router>
+                <Navbar />
                 <Switch>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Nulla quibusdam ut, facere nostrum tenetur iste aliquam
-                    obcaecati at corporis. Id cumque eveniet velit saepe
-                    molestias neque ad similique dolorem vel.
+                    <Route path="/about">
+                        <div>ABOUT</div>
+                    </Route>
+                    <Route path="/shop">
+                        <div>Shop</div>
+                    </Route>
+                    <Route path="/">
+                        <div>HOME</div>
+                    </Route>
                 </Switch>
             </Router>
         </ThemeProvider>
