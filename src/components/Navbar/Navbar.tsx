@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 });
 
-const Navbar = () => {
+export const Navbar = () => {
     const history = useHistory();
     const classes = useStyles();
 
@@ -42,5 +42,3 @@ const Navbar = () => {
         </AppBar>
     );
 };
-
-export default Navbar;

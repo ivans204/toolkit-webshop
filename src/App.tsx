@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from 'components/Navbar/Navbar';
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
+import { Navbar } from 'components/Navbar';
 
 const theme = createTheme({
     palette: {
