@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { Navbar } from 'components/Navbar';
+import { ShopPage } from 'pages/shop/ShopPage';
 
 const theme = createTheme({
     palette: {
@@ -28,7 +29,7 @@ function App() {
                         <div>ABOUT</div>
                     </Route>
                     <Route path="/shop">
-                        <div>Shop</div>
+                        <ShopPage />
                     </Route>
                     <Route path="/">
                         <div>HOME</div>
