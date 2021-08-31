@@ -21,7 +21,7 @@ export const Navbar = () => {
     const classes = useStyles();
 
     return (
-        <AppBar color="primary" position="static">
+        <AppBar color="secondary" position="static">
             <Toolbar className={classes.root}>
                 <IconButton
                     edge="start"
