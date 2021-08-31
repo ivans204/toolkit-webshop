@@ -1,10 +1,13 @@
+import './style.css';
 import { ShopItem } from 'components/ShopItem';
 
 import { IProduct } from '../products';
 
 import { useGetProductsQuery } from 'app/services/products';
 
-import { Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+
+import Masonry from 'react-masonry-css';
 
 export const ShopPage = () => {
     const { data, error, isLoading } = useGetProductsQuery(
@@ -16,12 +19,10 @@ export const ShopPage = () => {
 
     return (
         <Container style={{ marginTop: '50px' }}>
-            <Grid
-                container
-                direction="row"
-                spacing={3}
-                alignContent="space-between"
-                justifyContent="center"
+            <Masonry
+                breakpointCols={3}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column"
             >
                 {data?.map(
                     ({
@@ -32,7 +33,7 @@ export const ShopPage = () => {
                         category,
                         image,
                     }: IProduct) => (
-                        <Grid item key={id} xs={4}>
+                        <div key={id}>
                             <ShopItem
                                 id={id}
                                 title={title}
@@ -41,10 +42,10 @@ export const ShopPage = () => {
                                 category={category}
                                 image={image}
                             />
-                        </Grid>
+                        </div>
                     )
                 )}
-            </Grid>
+            </Masonry>
         </Container>
     );
 };
