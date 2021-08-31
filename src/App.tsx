@@ -6,7 +6,7 @@ import { ShopPage } from 'pages/shop/ShopPage';
 
 const theme = createTheme({
     palette: {
-        primary: {
+        secondary: {
             main: '#fefefe',
         },
     },
