@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { IProduct } from 'pages/shop/products';
+
 import {
     Avatar,
     Button,
@@ -11,6 +12,7 @@ import {
     Collapse,
     IconButton,
     Typography,
+    Grid,
 } from '@material-ui/core';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         media: {
             height: 250,
+            margin: '25px 0',
         },
         expand: {
             transform: 'rotate(0deg)',
@@ -33,7 +36,13 @@ const useStyles = makeStyles((theme: Theme) =>
             transform: 'rotate(180deg)',
         },
         header: {
-            minHeight: '116px',
+            // minHeight: '116px',
+        },
+        cardActions: {
+            padding: ' 0 16px 16px 16px',
+        },
+        priceTag: {
+            marginRight: '5px',
         },
     })
 );
@@ -71,8 +80,22 @@ export const ShopItem: FC<IProduct> = ({
                 style={{ backgroundSize: 'contain' }}
             />
 
-            <CardActions>
-                <Button variant="outlined">Add To Cart</Button>
+            <CardContent>
+                <Grid container alignItems="center">
+                    <Typography
+                        className={classes.priceTag}
+                        variant="subtitle2"
+                    >
+                        Price:{' '}
+                    </Typography>
+                    <Typography variant="h6">{price}$</Typography>
+                </Grid>
+            </CardContent>
+
+            <CardActions className={classes.cardActions}>
+                <Button variant="outlined" color="primary">
+                    Add To Cart
+                </Button>
                 <IconButton
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
