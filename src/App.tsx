@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { createTheme, ThemeProvider } from '@material-ui/core';
 import { Navbar } from 'components/Navbar';
-import { ShopPage } from 'pages/shop/ShopPage';
+// import { ShopPage } from 'pages/shop/ShopPage';
+import { Categories } from 'pages/Categories';
 
 const theme = createTheme({
     palette: {
@@ -29,7 +30,7 @@ function App() {
                         <div>ABOUT</div>
                     </Route>
                     <Route path="/shop">
-                        <ShopPage />
+                        <Categories />
                     </Route>
                     <Route path="/">
                         <div>HOME</div>
