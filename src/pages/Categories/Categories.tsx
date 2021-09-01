@@ -40,70 +40,52 @@ const useStyles = makeStyles({
 
 export const Categories = () => {
     const classes = useStyles();
+
+    const categoriesData = [
+        {
+            name: 'electronics',
+            img: Electronics,
+        },
+        {
+            name: "men's clothing",
+            img: Mens,
+        },
+        {
+            name: 'jewelery',
+            img: Jewelery,
+        },
+        {
+            name: "women's clothing",
+            img: Womens,
+        },
+    ];
+
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12}>
-                <Card>
-                    <CardActionArea component={Link} to="/electronics">
-                        <CardContent className={classes.cardContentTitle}>
-                            <Typography variant="h4">Electronics</Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            image={Electronics}
-                            alt="Electronics category"
-                            title="Electronics category"
-                            className={classes.imgMaxHeight}
-                        />
-                    </CardActionArea>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                <Card>
-                    <CardActionArea component={Link} to="/men's clothing">
-                        <CardContent className={classes.cardContentTitle}>
-                            <Typography variant="h4">Mens</Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            image={Mens}
-                            alt="Mens category"
-                            title="Mens category"
-                        />
-                    </CardActionArea>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-                <Card>
-                    <CardActionArea component={Link} to="/jewelery">
-                        <CardContent className={classes.cardContentTitle}>
-                            <Typography variant="h4">Jewelery</Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            image={Jewelery}
-                            alt="Jewelery category"
-                            title="Jewelery category"
-                        />
-                    </CardActionArea>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4}>
-                <Card>
-                    <CardActionArea component={Link} to="/women's clothing">
-                        <CardContent className={classes.cardContentTitle}>
-                            <Typography variant="h4">Womens</Typography>
-                        </CardContent>
-                        <CardMedia
-                            component="img"
-                            image={Womens}
-                            alt="Womens category"
-                            title="Womens category"
-                            className={classes.imgMaxHeight}
-                        />
-                    </CardActionArea>
-                </Card>
-            </Grid>
+            {categoriesData.map(({ name, img }, index) => (
+                <Grid
+                    item
+                    key={name}
+                    xs={12}
+                    sm={index !== 0 ? 6 : 12}
+                    md={index !== 0 ? 4 : 12}
+                >
+                    <Card>
+                        <CardActionArea component={Link} to={`/${name}`}>
+                            <CardContent className={classes.cardContentTitle}>
+                                <Typography variant="h4">{name}</Typography>
+                            </CardContent>
+                            <CardMedia
+                                component="img"
+                                image={img}
+                                alt={name}
+                                title={name}
+                                className={classes.imgMaxHeight}
+                            />
+                        </CardActionArea>
+                    </Card>
+                </Grid>
+            ))}
         </Grid>
     );
 };
