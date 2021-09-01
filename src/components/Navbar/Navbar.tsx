@@ -148,7 +148,11 @@ export const Navbar = () => {
                 <Divider />
                 <List>
                     {categories.map(({ name, icon }) => (
-                        <ListItem button key={name}>
+                        <ListItem
+                            button
+                            key={name}
+                            onClick={() => history.push(name)}
+                        >
                             <ListItemIcon>{icon}</ListItemIcon>
                             <ListItemText
                                 style={{ whiteSpace: 'nowrap' }}
