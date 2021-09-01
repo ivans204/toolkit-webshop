@@ -7,7 +7,7 @@ import {
     Container,
 } from '@material-ui/core';
 import { Navbar } from 'components/Navbar';
-// import { ShopPage } from 'pages/ShopPage';
+import { ShopPage } from 'pages/ShopPage';
 import { Categories } from 'pages/Categories';
 
 const theme = createTheme({
@@ -46,16 +46,16 @@ function App() {
                             <Categories />
                         </Route>
                         <Route path="/electronics">
-                            <h1>Electronics</h1>
+                            <ShopPage categoryName="electronics" />
                         </Route>
                         <Route path="/jewelery">
-                            <h1>jew</h1>
+                            <ShopPage categoryName="jewelery" />
                         </Route>
                         <Route path="/mens">
-                            <h1>mens</h1>
+                            <ShopPage categoryName="men's clothing" />
                         </Route>
                         <Route path="/womens">
-                            <h1>womens</h1>
+                            <ShopPage categoryName="women's clothing" />
                         </Route>
                         <Route path="/">
                             <div>HOME</div>
