@@ -7,7 +7,7 @@ import {
     Container,
 } from '@material-ui/core';
 import { Navbar } from 'components/Navbar';
-// import { ShopPage } from 'pages/shop/ShopPage';
+// import { ShopPage } from 'pages/ShopPage';
 import { Categories } from 'pages/Categories';
 
 const theme = createTheme({

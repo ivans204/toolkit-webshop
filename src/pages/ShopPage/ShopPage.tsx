@@ -1,7 +1,7 @@
 import './style.css';
 import { ShopItem } from 'components/ShopItem';
 
-import { IProduct } from '../products';
+import { IProduct } from './products';
 
 import { useGetProductsQuery } from 'app/services/products';
 
