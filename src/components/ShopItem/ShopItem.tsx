@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IProduct } from 'pages/shop/products';
+import { IProduct } from 'pages/ShopPage/products';
 
 import {
     Avatar,
