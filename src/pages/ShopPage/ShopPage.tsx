@@ -1,16 +1,20 @@
+import { FC } from 'react';
 import './style.css';
 import { ShopItem } from 'components/ShopItem';
 
 import { IProduct } from './products';
 
-import { useGetProductsQuery } from 'app/services/products';
+import { useGetCategoryProductsQuery } from 'app/services/products';
 
 import Masonry from 'react-masonry-css';
 
-export const ShopPage = () => {
-    const { data, error, isLoading } = useGetProductsQuery(
-        'https://fakestoreapi.com/products'
-    );
+interface ShopPageProps {
+    categoryName: string;
+}
+
+export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
+    const { data, error, isLoading } =
+        useGetCategoryProductsQuery(categoryName);
 
     if (isLoading) return <h1>Loading...</h1>;
     if (error) return <h1>Error...</h1>;
