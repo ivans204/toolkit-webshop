@@ -32,6 +32,18 @@ function App() {
                     <Route path="/shop">
                         <Categories />
                     </Route>
+                    <Route path="/electronics">
+                        <h1>Electronics</h1>
+                    </Route>
+                    <Route path="/jewelery">
+                        <h1>jew</h1>
+                    </Route>
+                    <Route path="/mens">
+                        <h1>mens</h1>
+                    </Route>
+                    <Route path="/womens">
+                        <h1>womens</h1>
+                    </Route>
                     <Route path="/">
                         <div>HOME</div>
                     </Route>
