@@ -5,8 +5,6 @@ import { IProduct } from '../products';
 
 import { useGetProductsQuery } from 'app/services/products';
 
-import { Container } from '@material-ui/core';
-
 import Masonry from 'react-masonry-css';
 
 export const ShopPage = () => {
@@ -18,34 +16,32 @@ export const ShopPage = () => {
     if (error) return <h1>Error...</h1>;
 
     return (
-        <Container style={{ marginTop: '50px' }}>
-            <Masonry
-                breakpointCols={3}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column"
-            >
-                {data?.map(
-                    ({
-                        id,
-                        title,
-                        price,
-                        description,
-                        category,
-                        image,
-                    }: IProduct) => (
-                        <div key={id}>
-                            <ShopItem
-                                id={id}
-                                title={title}
-                                price={price}
-                                description={description}
-                                category={category}
-                                image={image}
-                            />
-                        </div>
-                    )
-                )}
-            </Masonry>
-        </Container>
+        <Masonry
+            breakpointCols={3}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+        >
+            {data?.map(
+                ({
+                    id,
+                    title,
+                    price,
+                    description,
+                    category,
+                    image,
+                }: IProduct) => (
+                    <div key={id}>
+                        <ShopItem
+                            id={id}
+                            title={title}
+                            price={price}
+                            description={description}
+                            category={category}
+                            image={image}
+                        />
+                    </div>
+                )
+            )}
+        </Masonry>
     );
 };
