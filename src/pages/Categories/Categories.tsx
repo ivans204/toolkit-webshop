@@ -67,7 +67,7 @@ export const Categories = () => {
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <Card>
-                        <CardActionArea component={Link} to="/mens">
+                        <CardActionArea component={Link} to="/men's clothing">
                             <CardContent className={classes.cardContentTitle}>
                                 <Typography variant="h4">Mens</Typography>
                             </CardContent>
@@ -97,7 +97,7 @@ export const Categories = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={4}>
                     <Card>
-                        <CardActionArea component={Link} to="/womens">
+                        <CardActionArea component={Link} to="/women's clothing">
                             <CardContent className={classes.cardContentTitle}>
                                 <Typography variant="h4">Womens</Typography>
                             </CardContent>

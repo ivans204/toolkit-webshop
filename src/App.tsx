@@ -51,10 +51,10 @@ function App() {
                         <Route path="/jewelery">
                             <ShopPage categoryName="jewelery" />
                         </Route>
-                        <Route path="/mens">
+                        <Route path="/men's clothing">
                             <ShopPage categoryName="men's clothing" />
                         </Route>
-                        <Route path="/womens">
+                        <Route path="/women's clothing">
                             <ShopPage categoryName="women's clothing" />
                         </Route>
                         <Route path="/">
