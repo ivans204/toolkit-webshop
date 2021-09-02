@@ -30,7 +30,11 @@ const useStyles = makeStyles({
         alignItems: 'center',
         transition: '0.3s',
 
-        '& h4': { color: 'white', textTransform: 'uppercase' },
+        '& h4': {
+            color: 'white',
+            textTransform: 'uppercase',
+            textAlign: 'center',
+        },
 
         '&:hover': {
             boxShadow: 'inset 0 0 0 800px rgb(0 0 0 / 70%)',
@@ -67,7 +71,7 @@ export const Categories = () => {
                     item
                     key={name}
                     xs={12}
-                    sm={index !== 0 ? 6 : 12}
+                    sm={index === 0 || index % 3 === 0 ? 12 : 6}
                     md={index !== 0 ? 4 : 12}
                 >
                     <Card>
