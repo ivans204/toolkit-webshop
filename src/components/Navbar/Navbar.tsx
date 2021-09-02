@@ -23,6 +23,7 @@ import DevicesOtherIcon from '@material-ui/icons/DevicesOther';
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import PregnantWomanIcon from '@material-ui/icons/PregnantWoman';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const drawerWidth = 240;
 
@@ -164,6 +165,9 @@ export const Navbar = () => {
                 <Divider />
                 <List>
                     <ListItem button onClick={() => history.push('/cart')}>
+                        <ListItemIcon>
+                            <ShoppingCartIcon />
+                        </ListItemIcon>
                         <ListItemText
                             style={{ whiteSpace: 'nowrap' }}
                             primary="cart"
