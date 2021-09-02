@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 duration: theme.transitions.duration.leavingScreen,
             }),
             overflowX: 'hidden',
-            width: 0,
+            width: '55px',
         },
         toolbar: {
             display: 'flex',
