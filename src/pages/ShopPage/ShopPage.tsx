@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import './style.css';
+
 import { ShopItem } from 'components/ShopItem';
 import { Spinner } from 'components/Spinner';
 
@@ -14,8 +15,11 @@ interface ShopPageProps {
 }
 
 export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
-    const { data, error, isLoading } =
-        useGetCategoryProductsQuery(categoryName);
+    const {
+        data: products,
+        error,
+        isLoading,
+    } = useGetCategoryProductsQuery(categoryName);
 
     const breakpoints = {
         default: 3,
@@ -32,27 +36,11 @@ export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
         >
-            {data?.map(
-                ({
-                    id,
-                    title,
-                    price,
-                    description,
-                    category,
-                    image,
-                }: IProduct) => (
-                    <div key={id}>
-                        <ShopItem
-                            id={id}
-                            title={title}
-                            price={price}
-                            description={description}
-                            category={category}
-                            image={image}
-                        />
-                    </div>
-                )
-            )}
+            {products?.map((product: IProduct) => (
+                <div key={product.id}>
+                    <ShopItem product={product} />
+                </div>
+            ))}
         </Masonry>
     );
 };
