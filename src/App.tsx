@@ -9,6 +9,7 @@ import {
 import { Navbar } from 'components/Navbar';
 import { ShopPage } from 'pages/ShopPage';
 import { Categories } from 'pages/Categories';
+import { Cart } from 'pages/Cart';
 
 const theme = createTheme({
     palette: {
@@ -57,7 +58,10 @@ function App() {
                         <Route path="/women's clothing">
                             <ShopPage categoryName="women's clothing" />
                         </Route>
-                        <Route path="/">
+                        <Route>
+                            <Cart />
+                        </Route>
+                        <Route exact path="/">
                             <div>HOME</div>
                         </Route>
                     </Switch>
