@@ -3,7 +3,7 @@ import { RootState } from '../../app/store';
 
 import { IProduct } from 'pages/ShopPage/products';
 
-interface CartState {
+export interface CartState {
     items: IProduct[];
 }
 
