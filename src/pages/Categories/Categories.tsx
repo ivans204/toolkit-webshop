@@ -17,7 +17,7 @@ import Womens from '../../assets/images/womens.jpg';
 
 const useStyles = makeStyles({
     imgMaxHeight: {
-        maxHeight: '500px',
+        maxHeight: '450px',
     },
     cardContentTitle: {
         position: 'absolute',
