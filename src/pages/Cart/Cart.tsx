@@ -1,3 +1,7 @@
+import { Fragment } from 'react';
+import { useSelector } from 'react-redux';
+import { selectCart } from 'features/cart/cartSlice';
+
 import {
     makeStyles,
     createStyles,
@@ -13,6 +17,7 @@ import {
 const useStyles = makeStyles((theme: Theme) => createStyles({}));
 
 export const Cart = () => {
+    const cartData = useSelector(selectCart);
     const classes = useStyles();
 
     return (
@@ -22,14 +27,12 @@ export const Cart = () => {
                     <Card>
                         <CardHeader title="Cart" />
 
-                        <CardContent>ITEM</CardContent>
-                        <Divider />
-
-                        <CardContent>ITEM</CardContent>
-                        <Divider />
-
-                        <CardContent>ITEM</CardContent>
-                        <Divider />
+                        {cartData.map((item) => (
+                            <Fragment key={item.id}>
+                                <CardContent>{item.title}</CardContent>
+                                <Divider />
+                            </Fragment>
+                        ))}
                     </Card>
                 </Paper>
             </Grid>
