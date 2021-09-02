@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import './style.css';
 import { ShopItem } from 'components/ShopItem';
+import { Spinner } from 'components/Spinner';
 
 import { IProduct } from './products';
 
@@ -22,7 +23,7 @@ export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
         '960': 2,
     };
 
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return <Spinner />;
     if (error) return <h1>Error...</h1>;
 
     return (
