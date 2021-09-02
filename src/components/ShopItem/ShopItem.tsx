@@ -19,6 +19,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
+import { useDispatch } from 'react-redux';
+import { addToCart } from 'features/cart/cartSlice';
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         media: {
@@ -35,9 +38,6 @@ const useStyles = makeStyles((theme: Theme) =>
         expandOpen: {
             transform: 'rotate(180deg)',
         },
-        header: {
-            // minHeight: '116px',
-        },
         cardActions: {
             padding: ' 0 16px 16px 16px',
         },
@@ -47,24 +47,29 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export const ShopItem: FC<IProduct> = ({
-    title,
-    price,
-    description,
-    category,
-    image,
-}) => {
+interface ShopItemProps {
+    product: IProduct;
+}
+
+export const ShopItem: FC<ShopItemProps> = ({ product }) => {
+    const dispatch = useDispatch();
     const classes = useStyles();
+
+    const { title, category, description, price, image } = product;
 
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const handleAddToCart = () => {
+        dispatch(addToCart(product));
+    };
+
     return (
         <Card>
             <CardHeader
-                className={classes.header}
                 avatar={<Avatar aria-label="recipe">{title[0]}</Avatar>}
                 title={
                     <Typography variant="body2" aria-label="recipe">
@@ -93,7 +98,11 @@ export const ShopItem: FC<IProduct> = ({
             </CardContent>
 
             <CardActions className={classes.cardActions}>
-                <Button variant="outlined" color="primary">
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={handleAddToCart}
+                >
                     Add To Cart
                 </Button>
                 <IconButton
