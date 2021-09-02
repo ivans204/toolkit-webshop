@@ -161,6 +161,15 @@ export const Navbar = () => {
                         </ListItem>
                     ))}
                 </List>
+                <Divider />
+                <List>
+                    <ListItem button onClick={() => history.push('/cart')}>
+                        <ListItemText
+                            style={{ whiteSpace: 'nowrap' }}
+                            primary="cart"
+                        />
+                    </ListItem>
+                </List>
             </Drawer>
         </div>
     );
