@@ -16,12 +16,18 @@ export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
     const { data, error, isLoading } =
         useGetCategoryProductsQuery(categoryName);
 
+    const breakpoints = {
+        default: 3,
+        '600': 1,
+        '960': 2,
+    };
+
     if (isLoading) return <h1>Loading...</h1>;
     if (error) return <h1>Error...</h1>;
 
     return (
         <Masonry
-            breakpointCols={3}
+            breakpointCols={breakpoints}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
         >
