@@ -5,15 +5,18 @@ import { selectCart } from 'features/cart/cartSlice';
 import {
     makeStyles,
     createStyles,
-    Theme,
-    Grid,
+    Button,
     Card,
     CardHeader,
     CardContent,
-    Paper,
-    Divider,
     CardMedia,
+    Divider,
+    Paper,
+    Grid,
+    Theme,
 } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -25,6 +28,10 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%',
             height: '150px',
             backgroundSize: 'contain',
+        },
+        itemMiddle: {
+            display: 'flex',
+            flexDirection: 'column',
         },
     })
 );
@@ -54,8 +61,26 @@ export const Cart = () => {
                                             title={item.title}
                                         />
                                     </Grid>
-                                    <Grid item xs={6}>
+                                    <Grid
+                                        item
+                                        xs={6}
+                                        className={classes.itemMiddle}
+                                    >
                                         <CardContent>{item.title}</CardContent>
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <Button
+                                                startIcon={
+                                                    <DeleteForeverIcon />
+                                                }
+                                            >
+                                                Remove
+                                            </Button>
+                                            <Button
+                                                startIcon={<FavoriteIcon />}
+                                            >
+                                                Add To Wishlist
+                                            </Button>
+                                        </div>
                                     </Grid>
                                     <Grid item xs={3}>
                                         ACTIONS
