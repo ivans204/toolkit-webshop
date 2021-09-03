@@ -12,9 +12,22 @@ import {
     CardContent,
     Paper,
     Divider,
+    CardMedia,
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme: Theme) => createStyles({}));
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        cartItem: {
+            display: 'flex',
+            flexDirection: 'row',
+        },
+        itemImg: {
+            width: '100%',
+            height: '150px',
+            backgroundSize: 'contain',
+        },
+    })
+);
 
 export const Cart = () => {
     const cartData = useSelector(selectCart);
@@ -29,7 +42,25 @@ export const Cart = () => {
 
                         {cartData.map((item) => (
                             <Fragment key={item.id}>
-                                <CardContent>{item.title}</CardContent>
+                                <Grid
+                                    container
+                                    spacing={1}
+                                    style={{ padding: '16px' }}
+                                >
+                                    <Grid item xs={3}>
+                                        <CardMedia
+                                            className={classes.itemImg}
+                                            image={item.image}
+                                            title={item.title}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <CardContent>{item.title}</CardContent>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        ACTIONS
+                                    </Grid>
+                                </Grid>
                                 <Divider />
                             </Fragment>
                         ))}
