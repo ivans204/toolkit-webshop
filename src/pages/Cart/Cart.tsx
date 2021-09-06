@@ -6,14 +6,17 @@ import {
     makeStyles,
     createStyles,
     Button,
+    ButtonGroup,
     Card,
     CardHeader,
     CardContent,
     CardMedia,
     Divider,
+    TextField,
     Paper,
     Grid,
     Theme,
+    Typography,
 } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -29,9 +32,27 @@ const useStyles = makeStyles((theme: Theme) =>
             height: '150px',
             backgroundSize: 'contain',
         },
-        itemMiddle: {
+        gridItemColumn: {
             display: 'flex',
             flexDirection: 'column',
+        },
+        itemContainer: {
+            padding: '32px 16px',
+        },
+        itemOnBotRight: {
+            marginTop: 'auto',
+            textAlign: 'right',
+        },
+        actionBtns: {
+            display: 'flex',
+            justifyContent: 'center',
+
+            '& button span, & input': {
+                width: '2rem',
+            },
+            '& input': {
+                textAlign: 'center',
+            },
         },
     })
 );
@@ -52,7 +73,7 @@ export const Cart = () => {
                                 <Grid
                                     container
                                     spacing={1}
-                                    style={{ padding: '16px' }}
+                                    className={classes.itemContainer}
                                 >
                                     <Grid item xs={3}>
                                         <CardMedia
@@ -61,10 +82,11 @@ export const Cart = () => {
                                             title={item.title}
                                         />
                                     </Grid>
+
                                     <Grid
                                         item
                                         xs={6}
-                                        className={classes.itemMiddle}
+                                        className={classes.gridItemColumn}
                                     >
                                         <CardContent>{item.title}</CardContent>
                                         <div style={{ marginTop: 'auto' }}>
@@ -82,8 +104,31 @@ export const Cart = () => {
                                             </Button>
                                         </div>
                                     </Grid>
-                                    <Grid item xs={3}>
-                                        ACTIONS
+
+                                    <Grid
+                                        item
+                                        xs={3}
+                                        className={classes.gridItemColumn}
+                                    >
+                                        <ButtonGroup
+                                            className={classes.actionBtns}
+                                        >
+                                            <Button>-</Button>
+                                            <TextField
+                                                variant="outlined"
+                                                onChange={() =>
+                                                    console.log(123)
+                                                }
+                                                defaultValue="1"
+                                            />
+                                            <Button>+</Button>
+                                        </ButtonGroup>
+                                        <Typography
+                                            variant="h6"
+                                            className={classes.itemOnBotRight}
+                                        >
+                                            ${item.price}
+                                        </Typography>
                                     </Grid>
                                 </Grid>
                                 <Divider />
