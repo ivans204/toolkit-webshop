@@ -91,7 +91,7 @@ export const ShopItem: FC<ShopItemProps> = ({ product }) => {
                         className={classes.priceTag}
                         variant="subtitle2"
                     >
-                        Price:{' '}
+                        Price:
                     </Typography>
                     <Typography variant="h6">{price}$</Typography>
                 </Grid>
