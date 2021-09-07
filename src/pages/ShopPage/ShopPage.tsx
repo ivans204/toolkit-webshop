@@ -15,11 +15,18 @@ interface ShopPageProps {
 }
 
 export const ShopPage: FC<ShopPageProps> = ({ categoryName }) => {
-    const {
+    let {
         data: products,
         error,
         isLoading,
     } = useGetCategoryProductsQuery(categoryName);
+
+    if (!isLoading) {
+        products = products.map((product: IProduct) => ({
+            ...product,
+            count: 1,
+        }));
+    }
 
     const breakpoints = {
         default: 3,
