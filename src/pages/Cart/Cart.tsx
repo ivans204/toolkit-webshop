@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
+
 import { useSelector } from 'react-redux';
-import { selectCart } from 'features/cart/cartSlice';
+import { selectCart, addItem, removeItem } from 'features/cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
 import {
     makeStyles,
@@ -12,7 +14,6 @@ import {
     CardContent,
     CardMedia,
     Divider,
-    TextField,
     Paper,
     Grid,
     Theme,
@@ -47,8 +48,8 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             justifyContent: 'center',
 
-            '& button span, & input': {
-                width: '2rem',
+            '& button, & input': {
+                maxWidth: '2rem',
             },
             '& input': {
                 textAlign: 'center',
@@ -58,6 +59,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const Cart = () => {
+    const dispatch = useDispatch();
+
     const cartData = useSelector(selectCart);
     const classes = useStyles();
 
@@ -113,21 +116,32 @@ export const Cart = () => {
                                         <ButtonGroup
                                             className={classes.actionBtns}
                                         >
-                                            <Button>-</Button>
-                                            <TextField
-                                                variant="outlined"
-                                                onChange={() =>
-                                                    console.log(123)
+                                            <Button
+                                                onClick={() =>
+                                                    dispatch(
+                                                        removeItem(item.id)
+                                                    )
                                                 }
-                                                defaultValue="1"
-                                            />
-                                            <Button>+</Button>
+                                            >
+                                                -
+                                            </Button>
+                                            <Button>{item.count}</Button>
+                                            <Button
+                                                onClick={() =>
+                                                    dispatch(addItem(item.id))
+                                                }
+                                            >
+                                                +
+                                            </Button>
                                         </ButtonGroup>
                                         <Typography
                                             variant="h6"
                                             className={classes.itemOnBotRight}
                                         >
-                                            ${item.price}
+                                            $
+                                            {(item.price * item.count).toFixed(
+                                                2
+                                            )}
                                         </Typography>
                                     </Grid>
                                 </Grid>
