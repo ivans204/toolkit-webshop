@@ -1,7 +1,12 @@
 import { Fragment } from 'react';
 
 import { useSelector } from 'react-redux';
-import { selectCart, addItem, removeItem } from 'features/cart/cartSlice';
+import {
+    selectCart,
+    addItem,
+    removeItem,
+    removeFromCart,
+} from 'features/cart/cartSlice';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -97,6 +102,11 @@ export const Cart = () => {
                                                 startIcon={
                                                     <DeleteForeverIcon />
                                                 }
+                                                onClick={() =>
+                                                    dispatch(
+                                                        removeFromCart(item.id)
+                                                    )
+                                                }
                                             >
                                                 Remove
                                             </Button>
@@ -122,6 +132,7 @@ export const Cart = () => {
                                                         removeItem(item.id)
                                                     )
                                                 }
+                                                disabled={item.count === 1}
                                             >
                                                 -
                                             </Button>
