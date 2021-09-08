@@ -62,7 +62,9 @@ export const cartSlice = createSlice({
             });
         },
         removeFromCart: (state, action: PayloadAction<number>) => {
-            state.items.filter((item) => item.id !== action.payload);
+            state.items = state.items.filter(
+                (item) => item.id !== action.payload
+            );
         },
     },
 });
