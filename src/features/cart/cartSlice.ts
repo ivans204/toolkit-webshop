@@ -58,16 +58,14 @@ export const cartSlice = createSlice({
             }
         },
         addItem: (state, action: PayloadAction<number>) => {
-            state.items.find((item) => {
-                if (item.id === action.payload) return item.count++;
-                return null;
-            });
+            state.items.find((item) =>
+                item.id === action.payload ? item.count++ : null
+            );
         },
         removeItem: (state, action: PayloadAction<number>) => {
-            state.items.find((item) => {
-                if (item.id === action.payload) return item.count--;
-                return null;
-            });
+            state.items.find((item) =>
+                item.id === action.payload ? item.count-- : null
+            );
         },
         removeFromCart: (state, action: PayloadAction<number>) => {
             state.items = state.items.filter(
