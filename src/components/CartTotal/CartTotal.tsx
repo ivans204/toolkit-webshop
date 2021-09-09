@@ -1,5 +1,8 @@
 import { FC } from 'react';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+
+import { addTotalPrice } from 'features/cart/cartSlice';
 
 import { IProduct } from 'pages/ShopPage/products';
 
@@ -11,10 +14,17 @@ interface CartTotalProps {
 
 export const CartTotal: FC<CartTotalProps> = ({ cartData }) => {
     const history = useHistory();
+    const dispatch = useDispatch();
+
     const priceTotal = cartData.reduce(
         (prev, current) => +(prev + current.price * current.count).toFixed(2),
         0
     );
+
+    const handleCheckout = () => {
+        dispatch(addTotalPrice(priceTotal));
+        history.push('/checkout');
+    };
 
     return (
         <CardContent>
@@ -33,7 +43,7 @@ export const CartTotal: FC<CartTotalProps> = ({ cartData }) => {
                 color="primary"
                 variant="contained"
                 style={{ width: '100%', marginTop: '16px' }}
-                onClick={() => history.push('/checkout')}
+                onClick={handleCheckout}
             >
                 Go To Checkout
             </Button>
