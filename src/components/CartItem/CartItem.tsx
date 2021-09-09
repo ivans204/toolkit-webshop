@@ -46,7 +46,7 @@ export const CartItem: FC<CartItemProps> = ({ item }) => {
                         >
                             Remove
                         </Button>
-                        <Button startIcon={<FavoriteIcon />}>
+                        <Button startIcon={<FavoriteIcon />} disabled>
                             Add To Wishlist
                         </Button>
                     </div>
