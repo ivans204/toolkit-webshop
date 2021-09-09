@@ -5,6 +5,7 @@ import { IProduct } from 'pages/ShopPage/products';
 
 export interface CartState {
     items: IProduct[];
+    totalPrice: number;
 }
 
 const initialState: CartState = {
@@ -40,6 +41,7 @@ const initialState: CartState = {
             count: 1,
         },
     ],
+    totalPrice: 0,
 };
 
 export const cartSlice = createSlice({
@@ -66,10 +68,13 @@ export const cartSlice = createSlice({
                 (item) => item.id !== action.payload
             );
         },
+        addTotalPrice: (state, action: PayloadAction<number>) => {
+            state.totalPrice = action.payload;
+        },
     },
 });
 
-export const { addToCart, addItem, removeItem, removeFromCart } =
+export const { addToCart, addItem, removeItem, removeFromCart, addTotalPrice } =
     cartSlice.actions;
 export const selectCart = (state: RootState) => state.cart.items;
 export default cartSlice.reducer;
