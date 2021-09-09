@@ -1,28 +1,13 @@
-import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { selectCart } from 'features/cart/cartSlice';
 
 import { CartItem } from 'components/CartItem';
+import { CartTotal } from 'components/CartTotal';
 
-import {
-    Button,
-    Card,
-    CardHeader,
-    CardContent,
-    Divider,
-    Paper,
-    Grid,
-    Typography,
-} from '@material-ui/core';
+import { Card, CardHeader, Paper, Grid } from '@material-ui/core';
 
 export const Cart = () => {
-    const history = useHistory();
     const cartData = useSelector(selectCart);
-
-    const priceTotal = cartData.reduce(
-        (prev, current) => +(prev + current.price * current.count).toFixed(2),
-        0
-    );
 
     return (
         <Grid container spacing={3}>
@@ -40,36 +25,7 @@ export const Cart = () => {
                 <Paper>
                     <Card>
                         <CardHeader title="Total" />
-                        <CardContent>
-                            <p>
-                                Amount:{' '}
-                                <span style={{ float: 'right' }}>
-                                    ${priceTotal}
-                                </span>
-                            </p>
-                            <p>
-                                Shipping:{' '}
-                                <span style={{ float: 'right' }}>Free</span>
-                            </p>
-                            <Divider />
-                            <Typography
-                                variant="h6"
-                                style={{ marginTop: '16px' }}
-                            >
-                                Total after tax:{' '}
-                                <span style={{ float: 'right' }}>
-                                    ${priceTotal}
-                                </span>
-                            </Typography>
-                            <Button
-                                color="primary"
-                                variant="contained"
-                                style={{ width: '100%', marginTop: '16px' }}
-                                onClick={() => history.push('/checkout')}
-                            >
-                                Go To Checkout
-                            </Button>
-                        </CardContent>
+                        <CartTotal cartData={cartData} />
                     </Card>
                 </Paper>
             </Grid>
