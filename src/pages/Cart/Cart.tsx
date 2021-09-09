@@ -1,7 +1,8 @@
-import { CartItem } from 'components/CartItem';
-
+import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { selectCart } from 'features/cart/cartSlice';
+
+import { CartItem } from 'components/CartItem';
 
 import {
     Button,
@@ -15,6 +16,7 @@ import {
 } from '@material-ui/core';
 
 export const Cart = () => {
+    const history = useHistory();
     const cartData = useSelector(selectCart);
 
     const priceTotal = cartData.reduce(
@@ -28,7 +30,6 @@ export const Cart = () => {
                 <Paper elevation={3}>
                     <Card>
                         <CardHeader title="Cart" />
-
                         {cartData.map((item) => (
                             <CartItem key={item.id} item={item} />
                         ))}
@@ -64,6 +65,7 @@ export const Cart = () => {
                                 color="primary"
                                 variant="contained"
                                 style={{ width: '100%', marginTop: '16px' }}
+                                onClick={() => history.push('/checkout')}
                             >
                                 Go To Checkout
                             </Button>
