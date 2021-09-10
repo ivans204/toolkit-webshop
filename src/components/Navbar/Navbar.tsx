@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 duration: theme.transitions.duration.leavingScreen,
             }),
             overflowX: 'hidden',
-            width: '55px',
+            width: 0,
         },
         toolbar: {
             display: 'flex',
@@ -130,6 +130,9 @@ export const Navbar = () => {
                         </Button>
                         <Button onClick={() => history.push('/shop')}>
                             Shop
+                        </Button>
+                        <Button onClick={() => history.push('/cart')}>
+                            Cart
                         </Button>
                     </ButtonGroup>
                     <Avatar>I</Avatar>
