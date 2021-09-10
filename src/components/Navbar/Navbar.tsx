@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+import { NavbarDrawer } from './NavbarDrawer';
+
 import {
     AppBar,
     Toolbar,
@@ -7,29 +10,11 @@ import {
     ButtonGroup,
     Button,
     Avatar,
-    Drawer,
-    Divider,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
 } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
-import DevicesOtherIcon from '@material-ui/icons/DevicesOther';
-import DonutLargeIcon from '@material-ui/icons/DonutLarge';
-import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
-import PregnantWomanIcon from '@material-ui/icons/PregnantWoman';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { useStyles } from './styles';
-
-const categories = [
-    { name: 'electronics', icon: <DevicesOtherIcon /> },
-    { name: 'jewelery', icon: <DonutLargeIcon /> },
-    { name: "men's clothing", icon: <DirectionsRunIcon /> },
-    { name: "women's clothing", icon: <PregnantWomanIcon /> },
-];
 
 export const Navbar = () => {
     const history = useHistory();
@@ -77,46 +62,7 @@ export const Navbar = () => {
                     <Avatar>I</Avatar>
                 </Toolbar>
             </AppBar>
-
-            <Drawer
-                variant="permanent"
-                className={`${
-                    open ? classes.drawerOpen : classes.drawerClose
-                } `}
-                classes={{
-                    paper: `${open ? classes.drawerOpen : classes.drawerClose}`,
-                }}
-            >
-                <div className={classes.toolbar}></div>
-                <Divider />
-                <List>
-                    {categories.map(({ name, icon }) => (
-                        <ListItem
-                            button
-                            key={name}
-                            onClick={() => history.push(name)}
-                        >
-                            <ListItemIcon>{icon}</ListItemIcon>
-                            <ListItemText
-                                style={{ whiteSpace: 'nowrap' }}
-                                primary={name}
-                            />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    <ListItem button onClick={() => history.push('/cart')}>
-                        <ListItemIcon>
-                            <ShoppingCartIcon />
-                        </ListItemIcon>
-                        <ListItemText
-                            style={{ whiteSpace: 'nowrap' }}
-                            primary="cart"
-                        />
-                    </ListItem>
-                </List>
-            </Drawer>
+            <NavbarDrawer open={open} />
         </div>
     );
 };
