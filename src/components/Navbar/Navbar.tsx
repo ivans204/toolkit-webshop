@@ -62,6 +62,7 @@ export const Navbar = () => {
                     <Avatar>I</Avatar>
                 </Toolbar>
             </AppBar>
+
             <NavbarDrawer open={open} />
         </div>
     );
